@@ -1,7 +1,3 @@
-const indexCtrl = {
-    renderIndex: (req, res) => {
-        res.send('asdasdas')
-    }
+export const renderIndex = (req, res) => {
+    res.send('asdasdas')
 }
-
-module.exports = indexCtrl

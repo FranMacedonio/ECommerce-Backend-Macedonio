@@ -1,12 +1,9 @@
-const mongoose = require('mongoose')
-const ProductSchema = require('../models/Product.model')
+// DAO
+import ProductDAO from '../services/dao/product.dao.js'
+const productos = new ProductDAO
 
-const productosCtrl = {
-    renderProductos: async (req, res) => {
-        const productos = await ProductSchema.find({})
-        res.render('productos', { productos })
-    }
-
+export const renderProducts = async (req, res) => {
+    res.render('productos', {
+        productos: await productos.getObj()
+    })
 }
-
-module.exports = productosCtrl
