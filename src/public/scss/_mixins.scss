@@ -1,0 +1,16 @@
+@mixin nombre_de_la_funcion($variable: valor) {
+    //css
+}
+@include nombre_de_la_funcion($variable: valor);
+
+@mixin corner-icon($name, $top-or-bottom, $left-or-right) {
+    .icon-#{$name} {
+      background-image: url("/icons/#{$name}.svg");
+      position: absolute;
+      #{$top-or-bottom}: 0;
+      #{$left-or-right}: 0;
+    }
+  }
+  
+  @include corner-icon("mail", top, left);
+  
