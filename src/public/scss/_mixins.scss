@@ -13,4 +13,11 @@
   }
   
   @include corner-icon("mail", top, left);
-  
+
+
+@mixin flex($flexflow, $justify, $align) {
+  display: flex;
+  flex-flow: $flexflow;
+  justify-content: $justify;
+  align-items: $align;
+}
