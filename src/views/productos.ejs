@@ -4,19 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>productos</title>
+    <title><%= nav_title %></title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>productos</h1>
-    <% productos.forEach(prod => {%>
-        <h1><%= prod.name %></h1>
-        <img src="<%= prod.img %>" alt="<%= prod.name %>"> 
-        <h2><%= prod.description %></h2>
-        <h1><%= prod.price %></h1>
-        <h3><%= prod.category %></h3>
-        <h3><%= prod.brand %></h3>
-    <% }) %>
+    <div id="container">
+        <%- include('partials/nav') %>
+        <h1>productos</h1>
+        <div id="cards-container">
+            <%- include('partials/cards') %>
+        </div>
+    </div>
 
     <script src="js/app.js"></script>
 </body>

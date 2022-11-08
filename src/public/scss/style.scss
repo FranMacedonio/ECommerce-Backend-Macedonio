@@ -28,6 +28,8 @@ body {
         background-color: $white;
         width: calc(100vw - 4rem);
         height: calc(100vh - 4rem);
+        overflow-y: scroll;
+        border-radius: 1rem;
 
         nav {
             @include flex(row nowrap, center, center);
@@ -117,6 +119,53 @@ body {
                 a {
                     &:hover {
                         color: $primary;
+                    }
+                }
+            }
+        }
+
+        #cards-container {
+            @include flex(row wrap, space-around, center);
+
+            .cards {
+                @include flex(column nowrap, space-between, center);
+                width: 20rem;
+                height: 32rem;
+                padding: 1rem 2rem 0 2rem;
+                margin: 2rem 6rem;
+                text-align: center;
+                box-shadow: 15px 10px 3px rgba(0, 0, 0, 0.3);
+
+                background-color: $grey;
+
+                img {
+                    width: 15rem;
+                }
+                .prod-name {
+                    font-weight: 600;
+                    font-size: 24px;
+                }
+                .prod-price {
+                    font-weight: 700;
+                    font-size: 28px;
+                }
+                .btn-carrito {
+                    display: block;
+                    cursor: pointer;
+                    font-family: $font;
+                    width: calc(100% + 4rem);
+                    height: 3rem;
+                    border: none;
+                    background-color: $black;
+                    color: $white;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    transition-duration: 200ms;
+                    transition-timing-function: ease-out;
+
+                    &:hover {
+                        color: $black;
+                        background-color: $primary;
                     }
                 }
             }

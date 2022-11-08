@@ -4,6 +4,12 @@ const productos = new ProductDAO
 
 export const renderProducts = async (req, res) => {
     res.render('productos', {
-        productos: await productos.getObj()
+        nav_title: 'Productos',
+        productos: await productos.getObj(),
+        usuario: {
+            name: 'Gunball',
+            img: 'https://pbs.twimg.com/profile_images/1275205116447129686/CRlJxNPm_400x400.jpg',
+            email: 'gunball@gmail.com'
+        }
     })
 }

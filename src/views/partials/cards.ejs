@@ -1,0 +1,9 @@
+<% productos.forEach(prod => { %>
+    <div class="cards">
+        <img src="<%= prod.img %>" alt="<%= prod.name %>">
+        <p class="prod-name"><%= prod.name %></p>
+        <p><%= prod.description %></p>
+        <p class="prod-price">$<%= prod.price %></p>
+        <button data-id="<%= prod._id %>" class="btn-carrito">Agregar al Carrito</button>
+    </div>
+<% }) %>
