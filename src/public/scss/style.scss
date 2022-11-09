@@ -150,7 +150,8 @@ body {
                     font-size: 28px;
                 }
                 .btn-carrito {
-                    display: block;
+                    display: grid;
+                    place-items: center;
                     cursor: pointer;
                     font-family: $font;
                     width: calc(100% + 4rem);

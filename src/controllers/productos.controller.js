@@ -15,11 +15,11 @@ export const renderProducts = async (req, res) => {
 }
 
 export const renderProduct = async (req, res) => {
-    const producto = await productos.getObj('6364473184a300f720fc8074')
+    const producto = await productos.getObj(req.params.id)
     console.log(producto)
 
     res.render('producto', {
-        nav_title: 'Producto',
+        nav_title: producto[0].name + ' | N.A.V',
         producto,
         usuario: {
             name: 'Gunball',
