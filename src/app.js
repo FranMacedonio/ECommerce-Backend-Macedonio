@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 // Routes
 import indexRoutes from './routes/index.routes.js'
 import productsRoutes from './routes/productos.routes.js'
+import apiRoutes from './routes/api.routes.js'
 
 // Initializations
 const app = express()
@@ -25,6 +26,7 @@ app.use(express.urlencoded({extended: false}))
 // Routes
 app.use(indexRoutes)
 app.use(productsRoutes)
+app.use(apiRoutes)
 
 // Static Files
 app.use(express.static(join(__dirname, 'public')))

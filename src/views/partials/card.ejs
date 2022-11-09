@@ -1,0 +1,14 @@
+<div id="card">
+    <img src="<%= producto[0].img %>" alt="<%= producto[0].name %>">
+    <div id="card-info">
+        <p class="prod-name"><%= producto[0].name %></p>
+        <p class="prod-desc"><%= producto[0].description %></p>
+        <p class="prod-price">$<%= producto[0].price %></p>
+        <div id='contador-container'>
+            <button id="restar"><img src="/images/icons/minus.svg" alt="-"></button>
+            <span id='contador'>0</span>
+            <button id="sumar"><img src="/images/icons/plus.svg" alt="-"></button>
+        </div>
+        <button id="btn-agregar" data-id="<%= producto[0]._id %>">Agregar al Carrito</button>
+    </div>
+</div>
