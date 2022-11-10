@@ -18,6 +18,11 @@ class MongoContainer {
         return object
     }
 
+    async findEmail(email) {
+        const objeto = await this.model.findOne({email: email})
+        return objeto
+    }
+
     async editObj(obj, id) {
         const newData = await this.model.updateOne({_id: id}, {$set: obj})
         return newData

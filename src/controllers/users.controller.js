@@ -1,26 +1,40 @@
+// DAO
+import UserDAO from "../services/dao/user.dao.js"
+const users = new UserDAO
+
 export const renderSingup = (req, res) => {
-    res.render('signup', {
-        nav_title: 'Registrarse | N.A.V',
-        usuario: {
-            name: 'Gunball',
-            img: 'https://pbs.twimg.com/profile_images/1275205116447129686/CRlJxNPm_400x400.jpg',
-            email: 'gunball@gmail.com'
-        }
+    res.render('users/signup', {
+        nav_title: 'Registrarse | N.A.V'
     })
 }
 
-export const signup = (req, res) => {
-    res.send('registrado')
+export const signup = async (req, res) => {
+    const { name, email, password, confirm_password } = req.body
+    if(password !== confirm_password) {
+        console.log('Las contraseñas no coinciden')
+        res.redirect('/signup')
+    }
+    if(password.length < 6) {
+        console.log('La contraseña debe tener 6 o mas caracteres')
+        res.redirect('/signup')
+    }
+    
+    const emailUser = await users.findEmail(email)
+    if(emailUser) {
+        console.log(emailUser)
+        console.log('El email ingresado ya existe')
+        res.redirect('/signup')
+    } else {
+        const encryptPassword = await users.encryptPassword(password)
+        console.log(encryptPassword)
+        users.save({name, email, password: encryptPassword})
+        res.redirect('/login')
+    }
 }
 
 export const renderLogin = (req, res) => {
-    res.render('login', {
-        nav_title: 'Login | N.A.V',
-        usuario: {
-            name: 'Gunball',
-            img: 'https://pbs.twimg.com/profile_images/1275205116447129686/CRlJxNPm_400x400.jpg',
-            email: 'gunball@gmail.com'
-        }
+    res.render('users/login', {
+        nav_title: 'Login | N.A.V'
     })
 }
 

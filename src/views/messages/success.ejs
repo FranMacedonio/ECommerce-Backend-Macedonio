@@ -1,0 +1,13 @@
+<% if(success_msg) { %>
+    <div class="alert success">
+        <p><%= success_msg %></p>
+        <p id="cerrar">X</p>
+    </div>
+    <script>
+        const cerrar = document.getElementById('cerrar')
+        const alerta = document.getElementsByClassName('alert')
+        cerrar.addEventListener('click', () => {
+            alerta[0].style.display = 'none'
+        })
+    </script>
+<% } %>
