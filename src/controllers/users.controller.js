@@ -1,10 +1,13 @@
+import passport from "passport"
+
 // DAO
 import UserDAO from "../services/dao/user.dao.js"
 const users = new UserDAO
 
 export const renderSingup = (req, res) => {
     res.render('users/signup', {
-        nav_title: 'Registrarse | N.A.V'
+        nav_title: 'Registrarse | N.A.V',
+        usuario: req.user
     })
 }
 
@@ -27,21 +30,27 @@ export const signup = async (req, res) => {
     } else {
         const encryptPassword = await users.encryptPassword(password)
         console.log(encryptPassword)
-        users.save({name, email, password: encryptPassword})
+        users.save({name, email, password: encryptPassword, img:'/images/usuarios/usuario.jpg'})
         res.redirect('/login')
     }
 }
 
 export const renderLogin = (req, res) => {
     res.render('users/login', {
-        nav_title: 'Login | N.A.V'
+        nav_title: 'Login | N.A.V',
+        usuario: req.user
     })
 }
 
-export const login = (req, res) => {
-    res.send('login')
-}
+export const login = passport.authenticate('local', {
+    failureRedirect: '/login',
+    successRedirect: '/',
+    failureFlash: true
+})
 
 export const logout = (req, res) => {
-    res.send('logout')
+    req.logout(err => {
+        if(err) return next(err)
+        res.redirect('/login')
+    })
 }

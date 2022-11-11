@@ -118,7 +118,7 @@ body {
                     width: 120px;
                     height: 120px;
                     object-fit: cover;
-                    object-position: 25% 25%;
+                    object-position: center;
                     border-radius: 5%;
                     margin-right: 1rem;
                 }
@@ -271,6 +271,7 @@ body {
         }
 
         #formulario {
+            position: relative;
             @include flex(column nowrap, space-between, center);
             width: 35rem;
             margin: 6rem auto;
@@ -278,6 +279,14 @@ body {
             box-shadow: 20px 15px 3px rgba(0, 0, 0, 0.1);
 
             background-color: $grey;
+
+            img {
+                position: absolute;
+                left: 3rem;
+                top: 2rem;
+                width: 4rem
+            }
+
             form {
                 @include flex(column nowrap, space-between, center);
                 width: 80%;

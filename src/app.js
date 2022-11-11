@@ -1,9 +1,10 @@
 // App
 import express from 'express'
-import { dirname, join } from "path";
-import { fileURLToPath } from "url";
+import { dirname, join } from "path"
+import { fileURLToPath } from "url"
 import flash from 'connect-flash'
 import session from 'express-session'
+import passport from 'passport'
 
 // Routes
 import indexRoutes from './routes/index.routes.js'
@@ -12,8 +13,9 @@ import apiRoutes from './routes/api.routes.js'
 import usersRoutes from './routes/users.routes.js'
 
 // Initializations
+import './config/passport.js'
 const app = express()
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // Settings
 app.set('port', process.env.PORT || 3000)
@@ -27,11 +29,14 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }))
+app.use(passport.initialize())
+app.use(passport.session())
 app.use(flash())
 
 // Global Variables
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg')
+    res.locals.error = req.flash('error')
     next()
 })
 

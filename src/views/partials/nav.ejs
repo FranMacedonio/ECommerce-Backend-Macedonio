@@ -15,19 +15,20 @@
         </a>
         <a href="/nosotros">NOSOTROS</a>
     </div>
-    <div id="sign">
-        <a href="/login">Login</a>
-        <span>|</span>
-        <a href="/signup">Registrate</a>
-    </div>
-    <% if(false) { %>
+    <% if(usuario == undefined) { %>
+        <div id="sign">
+            <a href="/login">Login</a>
+            <span>|</span>
+            <a href="/signup">Registrate</a>
+        </div>
+    <% } else { %>
         <div id="usuario">
-            <img src="<%= usuario.img %>" alt="imagen usuario">
+            <img src="<%= usuario.img %>">
             <div id="usuario_datos">
                 <p id="usuario_nombre"><%= usuario.name %></p>
                 <p id="usuario_email"><%= usuario.email %></p>
-                <a href="#">Salir</a>
+                <a href="/logout">Salir</a>
             </div>
         </div>
-    <% }%>
+    <% } %>
 </nav>
