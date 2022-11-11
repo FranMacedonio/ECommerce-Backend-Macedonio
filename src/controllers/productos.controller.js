@@ -12,9 +12,11 @@ export const renderProducts = async (req, res) => {
 
 export const renderMarca = async (req, res) => {
     const marca = await productos.findMarca(req.params.marca)
+    const marcaSeleccionada = marca[0].brand
     res.render('products/marca', {
-        nav_title: 'N.A.V',
+        nav_title: marcaSeleccionada.toUpperCase() + ' | N.A.V',
         productos: marca,
+        marca: marcaSeleccionada,
         usuario: req.user
     })
 }

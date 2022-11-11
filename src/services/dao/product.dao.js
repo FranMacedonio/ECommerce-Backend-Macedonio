@@ -10,6 +10,11 @@ class ProductDAO extends MongoContainer {
         const objeto = await this.model.find({brand: marca})
         return objeto
     }
+
+    async findCategory(categoria) {
+        const objeto = await this.model.find({category: categoria})
+        return objeto
+    }
 }
 
 export default ProductDAO

@@ -4,12 +4,19 @@
 <body>
     <div id="container">
         <%- include('../partials/nav') %>
-        <h1>productos</h1>
-        <div id="cards-container">
-            <%- include('../partials/cards') %>
+        <p class="titulo">Opciones</p>
+        <div id="categoria_container">
+            <div class="categoria">
+                <a href="/categoria/remeras"><p>Remeras</p></a>
+            </div>
+            <div class="categoria">
+                <a href="/categoria/pantalones"><p>Pantalones</p></a>
+            </div>
+            <div class="categoria">
+                <a href="/categoria/zapatillas"><p>Zapatillas</p></a>
+            </div>
         </div>
     </div>
-
-    <script src="/js/app.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

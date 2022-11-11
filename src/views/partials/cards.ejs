@@ -1,8 +1,7 @@
-<% productos.forEach(prod => { %>
+<% productos.sort((a, b) => { a - b } ).forEach(prod => { %>
     <div class="cards">
-        <img src="<%= prod.img %>" alt="<%= prod.name %>">
         <p class="prod-name"><%= prod.name %></p>
-        <p><%= prod.description %></p>
+        <img src="<%= prod.img %>" alt="<%= prod.name %>">
         <p class="prod-price">$<%= prod.price %></p>
         <a href="/productos/<%= prod.brand %>/<%= prod._id %>" class="btn-carrito">Ver Producto</a>
     </div>
