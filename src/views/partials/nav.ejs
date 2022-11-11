@@ -7,12 +7,14 @@
     </div>
     <div id="botones">
         <a href="/productos"><p>PRODUCTOS</p></a>
-        <a href="/carrito">
-            <div id="carrito">
-                <p>CARRITO</p>
-                <p id="carrito_contador">0</p>
-            </div>
-        </a>
+        <% if(!(usuario == undefined)) { %>
+            <a href="/carrito">
+                <div id="carrito">
+                    <p>CARRITO</p>
+                    <p id="carrito_contador">0</p>
+                </div>
+            </a>
+        <% } %>
         <a href="/nosotros">NOSOTROS</a>
     </div>
     <% if(usuario == undefined) { %>

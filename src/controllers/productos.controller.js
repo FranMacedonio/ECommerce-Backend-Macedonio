@@ -4,8 +4,17 @@ const productos = new ProductDAO
 
 export const renderProducts = async (req, res) => {
     res.render('products/productos', {
-        nav_title: 'Productos',
+        nav_title: 'Productos | N.A.V',
         productos: await productos.getObj(),
+        usuario: req.user
+    })
+}
+
+export const renderMarca = async (req, res) => {
+    const marca = await productos.findMarca(req.params.marca)
+    res.render('products/marca', {
+        nav_title: 'N.A.V',
+        productos: marca,
         usuario: req.user
     })
 }

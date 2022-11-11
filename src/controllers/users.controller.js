@@ -5,10 +5,14 @@ import UserDAO from "../services/dao/user.dao.js"
 const users = new UserDAO
 
 export const renderSingup = (req, res) => {
-    res.render('users/signup', {
-        nav_title: 'Registrarse | N.A.V',
-        usuario: req.user
-    })
+    if(req.isAuthenticated()) {
+        res.redirect('/')
+    } else {
+        res.render('users/signup', {
+            nav_title: 'Registrarse | N.A.V',
+            usuario: req.user
+        })
+    }
 }
 
 export const signup = async (req, res) => {
@@ -36,10 +40,14 @@ export const signup = async (req, res) => {
 }
 
 export const renderLogin = (req, res) => {
-    res.render('users/login', {
-        nav_title: 'Login | N.A.V',
-        usuario: req.user
-    })
+    if(req.isAuthenticated()) {
+        res.redirect('/')
+    } else {
+        res.render('users/login', {
+            nav_title: 'Login | N.A.V',
+            usuario: req.user
+        })
+    }
 }
 
 export const login = passport.authenticate('local', {

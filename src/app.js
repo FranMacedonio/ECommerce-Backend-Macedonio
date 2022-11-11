@@ -11,6 +11,8 @@ import indexRoutes from './routes/index.routes.js'
 import productsRoutes from './routes/productos.routes.js'
 import apiRoutes from './routes/api.routes.js'
 import usersRoutes from './routes/users.routes.js'
+import carritoRoutes from './routes/carrito.routes.js'
+import nosotrosRoutes from './routes/nosotros.routes.js'
 
 // Initializations
 import './config/passport.js'
@@ -45,6 +47,8 @@ app.use(indexRoutes)
 app.use(productsRoutes)
 app.use(apiRoutes)
 app.use(usersRoutes)
+app.use(carritoRoutes)
+app.use(nosotrosRoutes)
 
 // Static Files
 app.use(express.static(join(__dirname, 'public')))

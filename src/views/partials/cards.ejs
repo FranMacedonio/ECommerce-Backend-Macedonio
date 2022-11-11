@@ -4,6 +4,6 @@
         <p class="prod-name"><%= prod.name %></p>
         <p><%= prod.description %></p>
         <p class="prod-price">$<%= prod.price %></p>
-        <a href="/productos/<%= prod._id %>" class="btn-carrito">Ver Producto</a>
+        <a href="/productos/<%= prod.brand %>/<%= prod._id %>" class="btn-carrito">Ver Producto</a>
     </div>
 <% }) %>
