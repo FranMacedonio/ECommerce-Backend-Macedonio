@@ -9,20 +9,22 @@
         <% if( carrito == null || carrito.items.length == 0) { %>
             <h1>Tu carrito esta vacio</h1>
             <p>Navega por nuestra pagina para ver la ropa que te ofrecemos.</p>
-            <div>
-                <h2>Marcas</h2>
-                <div>
-                    <a href="/productos/nike">nike</a>
-                    <a href="/productos/adidas">adidas</a>
-                    <a href="/productos/vans">vans</a>
+            <div id="carrito_opciones_container">
+                <div class="carrito_opciones">
+                    <h2>Marcas</h2>
+                    <div>
+                        <a href="/productos/nike">nike</a>
+                        <a href="/productos/adidas">adidas</a>
+                        <a href="/productos/vans">vans</a>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <h2>Prendas</h2>
-                <div>
-                    <a href="/categoria/remeras">remeras</a>
-                    <a href="/categoria/pantalones">pantalones</a>
-                    <a href="/categoria/zapatillas">zapatillas</a>
+                <div class="carrito_opciones">
+                    <h2>Prendas</h2>
+                    <div>
+                        <a href="/categoria/remeras">remeras</a>
+                        <a href="/categoria/pantalones">pantalones</a>
+                        <a href="/categoria/zapatillas">zapatillas</a>
+                    </div>
                 </div>
             </div>
         <% } else { %>

@@ -13,3 +13,6 @@ export const renderCarrito = async (req, res) => {
 export const deleteItem = async (req, res) => {
     await carrito.deleteItem(req.user.email, req.params.id)
 }
+export const deleteCarrito = async (req, res) => {
+    await carrito.deleteCarrito(req.user.email)
+}

@@ -127,6 +127,35 @@ body {
                 }
             }
         }
+
+        #carrito_opciones_container {
+            @include flex(row nowrap, center, center);
+        }
+
+        .carrito_opciones {
+            margin: 1rem 4rem;
+            a {
+                display: grid;
+                place-items: center;
+                cursor: pointer;
+                font-family: $font;
+                width: 10rem;
+                height: 3rem;
+                margin: 5px auto;
+                border: none;
+                background-color: $black;
+                color: $white;
+                text-transform: uppercase;
+                font-weight: 600;
+                transition-duration: 200ms;
+                transition-timing-function: ease-out;
+
+                &:hover {
+                    color: $black;
+                    background-color: $primary;
+                }
+            }
+        }
         
 
         .titulo {

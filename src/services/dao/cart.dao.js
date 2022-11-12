@@ -12,6 +12,12 @@ class CartDAO extends MongoContainer {
             {$pull: {items: {_id: itemID}}}
         )
     }
+    async deleteCarrito(cartEmail) {
+        await this.model.updateOne(
+            {email: cartEmail},
+            {$set: {items: []}}
+        )
+    }
 }
 
 export default CartDAO
