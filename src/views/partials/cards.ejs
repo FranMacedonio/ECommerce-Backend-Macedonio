@@ -1,4 +1,4 @@
-<% productos.sort((a, b) => { a - b } ).forEach(prod => { %>
+<% productos.forEach(prod => { %>
     <div class="cards">
         <p class="prod-name"><%= prod.name %></p>
         <img src="<%= prod.img %>" alt="<%= prod.name %>">

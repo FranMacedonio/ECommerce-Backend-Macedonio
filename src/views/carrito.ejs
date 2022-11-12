@@ -4,7 +4,59 @@
 <body>
     <div id="container">
         <%- include('partials/nav') %>
-        <h1>carrito</h1>
+        <% if( carrito == null || carrito.items.length == 0) { %>
+            <h1>Tu carrito esta vacio</h1>
+            <p>Navega por nuestra pagina para ver la ropa que te ofrecemos.</p>
+            <div>
+                <h2>Marcas</h2>
+                <div>
+                    <a href="/productos/nike">nike</a>
+                    <a href="/productos/adidas">adidas</a>
+                    <a href="/productos/vans">vans</a>
+                </div>
+            </div>
+            <div>
+                <h2>Prendas</h2>
+                <div>
+                    <a href="/categoria/remeras">remeras</a>
+                    <a href="/categoria/pantalones">pantalones</a>
+                    <a href="/categoria/zapatillas">zapatillas</a>
+                </div>
+            </div>
+        <% } else { %>
+            <div id="carrito_container">
+                <p class="titulo">Carrito de <%= usuario.name %></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Imagen</th>
+                            <th>Precio</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% carrito.items.forEach(prod => { %>
+                            <tr>
+                                <td><%= prod.name %></td>
+                                <td><img src="<%= prod.img %>" alt="<%= prod.name %>"></td>
+                                <td>$<span class="precios"><%= prod.price %></span></td>
+                                <td class="eliminar" data-id="<%= prod._id %>">X</td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                        <td>Total:</td>
+                        <td></td>
+                        <td id="precioFinal"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <button id="botonEliminar">Eliminar Carrito</button>
+                <button id="botonComprar">Realizar Compra</button>
+            </div>
+        <% } %>
     </div>
     <script src="js/app.js"></script>
 </body>

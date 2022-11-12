@@ -10,5 +10,4 @@ import { checkAuthentication } from '../helpers/auth.js'
 
 router.route('/carrito')
         .get(checkAuthentication ,renderCarrito)
-
 export default router

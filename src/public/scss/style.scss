@@ -38,6 +38,44 @@ body {
         overflow-y: scroll;
         border-radius: 1rem;
 
+        #carrito_container {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px;
+
+            .eliminar {
+                cursor: pointer;
+                color: rgb(150, 13, 13);
+                font-size: 18px;
+                font-weight: 800;
+                transition: color 100ms ease-out;
+
+                &:hover {
+                    color: red;
+                }
+            }
+
+            table img {
+                width: 80px;
+            }
+            table,
+            td {
+                text-align: center;
+                border: 1px solid $black;
+            }
+            th {
+                padding: 0 25px;
+            }
+            thead,
+            tfoot {
+                background-color: $black;
+                color: $white;
+            }
+        }
+        
+
         .titulo {
             width: 100%;
             overflow: hidden;

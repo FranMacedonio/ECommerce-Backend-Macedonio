@@ -8,7 +8,7 @@ export const renderClase = async (req, res) => {
     res.render('products/ropa', {
         nav_title: categoriaSeleccionada.toUpperCase() + ' | N.A.V',
         productos: clase,
-        marca: categoriaSeleccionada,
+        categoria: categoriaSeleccionada,
         usuario: req.user
     })
 }

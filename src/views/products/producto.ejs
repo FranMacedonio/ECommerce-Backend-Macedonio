@@ -8,6 +8,8 @@
     </div>
 
     <script src="/js/app.js"></script>
-    <script src="/js/agregar.js"></script>
+    <% if(!(usuario == undefined)) { %>
+        <script src="/js/agregar.js"></script>
+    <% } %>
 </body>
 </html>

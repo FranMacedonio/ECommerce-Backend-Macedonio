@@ -2,7 +2,9 @@ import passport from "passport"
 
 // DAO
 import UserDAO from "../services/dao/user.dao.js"
+import CartDAO from "../services/dao/cart.dao.js"
 const users = new UserDAO
+const carrito = new CartDAO
 
 export const renderSingup = (req, res) => {
     if(req.isAuthenticated()) {
@@ -33,8 +35,8 @@ export const signup = async (req, res) => {
         res.redirect('/signup')
     } else {
         const encryptPassword = await users.encryptPassword(password)
-        console.log(encryptPassword)
-        users.save({name, email, password: encryptPassword, img:'/images/usuarios/usuario.jpg'})
+        await users.save({name, email, password: encryptPassword, img:'/images/usuarios/usuario.jpg'})
+        await carrito.save({email, items: []})
         res.redirect('/login')
     }
 }

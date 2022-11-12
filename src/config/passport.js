@@ -11,7 +11,6 @@ passport.use(new LocalStrategy({
     if(!user) return done(null, false, { message: 'Los datos no coinciden' })
     
     const checkPassword = await bcrypt.compare(password, user.password)
-    console.log('Resultado del compare password', checkPassword)
     if(!checkPassword) return done(null, false, { message: 'Los datos no coinciden' })
 
     return done(null, user)

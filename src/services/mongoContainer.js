@@ -32,6 +32,22 @@ class MongoContainer {
         const deleted = await this.model.deleteOne({_id: id})
         return deleted
     }
+
+    async addToCart(cartID, obj) {
+        await this.model.findByIdAndUpdate(
+            {_id: cartID},
+            {$push: {items: obj}}
+        )
+    }
+
+    async addCant(itemName, cant) {
+        await this.model.updateOne(
+            {'items.name': itemName},
+            {$set: {
+                'items.$.cant': cant
+            }}
+        )
+    }
 }
 
 export default MongoContainer

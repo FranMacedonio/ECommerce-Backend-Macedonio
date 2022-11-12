@@ -1,6 +1,8 @@
 // DAO
 import ProductDAO from '../services/dao/product.dao.js'
+import CartDAO from '../services/dao/cart.dao.js'
 const productos = new ProductDAO
+const carritos = new CartDAO
 
 export const renderProducts = async (req, res) => {
     res.render('products/productos', {
@@ -23,11 +25,21 @@ export const renderMarca = async (req, res) => {
 
 export const renderProduct = async (req, res) => {
     const producto = await productos.getObj(req.params.id)
-    console.log(producto)
 
     res.render('products/producto', {
         nav_title: producto[0].name + ' | N.A.V',
         producto,
         usuario: req.user
     })
+}
+
+export const agregarProducto = async (req, res) => {
+    const carrito = await carritos.findEmail(req.user.email)
+    const arrayCarrito = carrito.items.map(x => x.name)
+    if(arrayCarrito.find(prod => prod == req.body.name)) {
+        const indx = carrito.items.findIndex(n => n.name == req.body.name)
+        await carritos.addCant(req.body.name, (req.body.cant + carrito.items[indx].cant))
+    } else {
+        await carritos.addToCart(carrito._id, req.body)
+    }
 }
