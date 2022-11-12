@@ -6,7 +6,7 @@ import CartDAO from "../services/dao/cart.dao.js"
 const users = new UserDAO
 const carrito = new CartDAO
 
-export const renderSingup = (req, res) => {
+export const renderSingup = async (req, res) => {
     if(req.isAuthenticated()) {
         res.redirect('/')
     } else {

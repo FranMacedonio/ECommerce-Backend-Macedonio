@@ -29,35 +29,47 @@
                 <table>
                     <thead>
                         <tr>
+                            <th></th>
                             <th>Producto</th>
                             <th>Imagen</th>
                             <th>Precio</th>
-                            <th></th>
+                            <th>Cantidad</th>
+                            <th>Precio Total</th>
                         </tr>
                     </thead>
                     <tbody>
                         <% carrito.items.forEach(prod => { %>
                             <tr>
-                                <td><%= prod.name %></td>
-                                <td><img src="<%= prod.img %>" alt="<%= prod.name %>"></td>
-                                <td>$<span class="precios"><%= prod.price %></span></td>
-                                <td class="eliminar" data-id="<%= prod._id %>">X</td>
+                                <td class="eliminar" data-id="<%= prod.name %>"><img src="/images/icons/trash.svg" alt="X"></td>
+                                <td class="nombre"><%= prod.name %></td>
+                                <td class="imgBack"><img src="<%= prod.img %>" alt="<%= prod.name %>"></td>
+                                <td>$<%= prod.price %></td>
+                                <td><%= prod.cant %></td>
+                                <td class="precio_final">$<span class="precios"><%= prod.price * prod.cant %></span></td>
                             </tr>
                         <% }) %>
                     </tbody>
                     <tfoot>
                         <tr>
-                        <td>Total:</td>
-                        <td></td>
-                        <td id="precioFinal"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="precio_final">Total:</td>
+                            <td id="precioFinal" class="precio_final"></td>
                         </tr>
                     </tfoot>
                 </table>
-                <button id="botonEliminar">Eliminar Carrito</button>
-                <button id="botonComprar">Realizar Compra</button>
+                <div id="carrito-btns">
+                    <button id="botonEliminar" class="btn">Eliminar Carrito</button>
+                    <button id="botonComprar" class="btn">Realizar Compra</button>
+                </div>
             </div>
         <% } %>
     </div>
-    <script src="js/app.js"></script>
+    <script src="/js/app.js"></script>
+    <% if( !(carrito == null || carrito.items.length == 0)) { %>
+        <script src="/js/carrito.js"></script>
+    <% } %>
 </body>
 </html>

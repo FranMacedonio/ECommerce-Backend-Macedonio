@@ -24,7 +24,6 @@ agregar.addEventListener('click', e => {
 })
 
 
-
 // contador
 const sumar = document.getElementById('sumar')
 const restar = document.getElementById('restar')
