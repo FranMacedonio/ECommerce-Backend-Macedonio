@@ -4,6 +4,8 @@
 <body>
     <div id="container">
         <%- include('partials/nav') %>
+        <p class="titulo">Carrito de <%= usuario.name %></p>
+        <div id="carrito_vacio"></div>
         <% if( carrito == null || carrito.items.length == 0) { %>
             <h1>Tu carrito esta vacio</h1>
             <p>Navega por nuestra pagina para ver la ropa que te ofrecemos.</p>
@@ -25,7 +27,6 @@
             </div>
         <% } else { %>
             <div id="carrito_container">
-                <p class="titulo">Carrito de <%= usuario.name %></p>
                 <table>
                     <thead>
                         <tr>
@@ -39,8 +40,8 @@
                     </thead>
                     <tbody>
                         <% carrito.items.forEach(prod => { %>
-                            <tr>
-                                <td class="eliminar" data-id="<%= prod.name %>"><img src="/images/icons/trash.svg" alt="X"></td>
+                            <tr id="<%= prod._id %>">
+                                <td class="eliminar" data-id="<%= prod._id %>"><img src="/images/icons/trash.svg" alt="X"></td>
                                 <td class="nombre"><%= prod.name %></td>
                                 <td class="imgBack"><img src="<%= prod.img %>" alt="<%= prod.name %>"></td>
                                 <td>$<%= prod.price %></td>

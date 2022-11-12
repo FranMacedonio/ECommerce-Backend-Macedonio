@@ -5,7 +5,7 @@ const id = agregar.getAttribute('data-id')
 agregar.addEventListener('click', e => {
     e.preventDefault()
     const {_id, name, img, price, brand} = productos.find(n => n._id == id)
-    const datos = {name, img, price, cant: Number(contador.innerHTML)}
+    const datos = {_id, name, img, price, cant: Number(contador.innerHTML)}
     const URL = `/productos/${brand}/${_id}`
 
     console.log('Datos del fetch', { datos: datos, url: URL })

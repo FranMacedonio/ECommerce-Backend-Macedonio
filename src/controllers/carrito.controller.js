@@ -10,3 +10,6 @@ export const renderCarrito = async (req, res) => {
         carrito: await carrito.findEmail(req.user.email)
     })
 }
+export const deleteItem = async (req, res) => {
+    await carrito.deleteItem(req.user.email, req.params.id)
+}
