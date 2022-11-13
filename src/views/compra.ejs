@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/header') %>
+<body>
+    <div id="container">
+        <%- include('partials/nav') %>
+        <p class="titulo">Realiza tu compra</p>
+        <div id="compra_container">
+            <h1>Orden de <%= usuario.name %></h1>
+            <div id="orden">
+                <li>
+                    <% carrito.items.forEach(prod => { %>
+                        <ul class="productos_orden"><%= prod.name %> x<%= prod.cant %> $<%= prod.price %> → $<span class="precios"><%= prod.price * prod.cant %></span></ul>
+                    <% }) %>
+                    <ul>Total: $<span id="precioFinal"></span></ul>
+                </li>
+            </div>
+            <form id="form" action="/orden" method="POST">
+                <input type="text" name="city" placeholder="Ciudad" autocomplete="off" autofocus>
+                <input type="text" name="address" placeholder="Direccion de entrega" autocomplete="off">
+                <input type="text" name="phone" placeholder="Telefono Celular" autocomplete="off">
+                <button class="btn">Realizar la compra</button>
+            </form>
+        </div>
+    </div>
+    <script src="/js/compra.js"></script>
+</body>
+</html>

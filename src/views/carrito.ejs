@@ -47,7 +47,7 @@
                                 <td class="nombre"><%= prod.name %></td>
                                 <td class="imgBack"><img src="<%= prod.img %>" alt="<%= prod.name %>"></td>
                                 <td>$<%= prod.price %></td>
-                                <td><%= prod.cant %></td>
+                                <td>x<%= prod.cant %></td>
                                 <td class="precio_final">$<span class="precios"><%= prod.price * prod.cant %></span></td>
                             </tr>
                         <% }) %>
@@ -65,7 +65,7 @@
                 </table>
                 <div id="carrito-btns">
                     <button id="botonEliminar" class="btn">Eliminar Carrito</button>
-                    <button id="botonComprar" class="btn">Realizar Compra</button>
+                    <a href="/orden" class="btn">Realizar Compra</a>
                 </div>
             </div>
         <% } %>
