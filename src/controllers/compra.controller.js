@@ -3,6 +3,8 @@ import OrderDAO from '../services/dao/order.dao.js'
 const carrito = new CartDAO
 const ordenes = new OrderDAO
 
+import moment from 'moment'
+
 export const renderOrdenes = async (req, res) => {
     res.render('compra', {
         nav_title: 'Compra | N.A.V',
@@ -20,7 +22,8 @@ export const purchase = async (req, res) => {
         city,
         address,
         phone,
-        finalPrice
+        finalPrice,
+        date: moment().format('DD-MM-YYYY, LT')
     })
     await carrito.deleteCarrito(req.user.email)
     res.redirect('/')

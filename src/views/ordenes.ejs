@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/header') %>
+<body>
+    <div id="container">
+        <%- include('partials/nav') %>
+        <p class="titulo">Compras de <%= usuario.name %></p>
+        <% if( ordenes.length == 0) { %>
+            <h1>Todavia no hiciste ninguna compra</h1>
+        <% } else { %>
+            <div id="ordenes_container">
+                <% ordenes.forEach(orden => { %>
+                    <div class="ordenes">
+                        <li>
+                            <% orden.items.forEach(prod => { %>
+                                <ul class="productos_orden"><%= prod.name %> x<%= prod.cant %> $<%= prod.price %> → $<span class="precios"><%= prod.price * prod.cant %></span></ul>
+                            <% }) %>
+                            <ul>Fecha: <%= orden.date %></ul>
+                            <ul>Total: $<%= orden.finalPrice %></ul>
+                        </li>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>

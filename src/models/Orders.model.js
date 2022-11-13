@@ -6,7 +6,8 @@ const OrdersSchema = new Schema({
     city: {type: String, required: true},
     address: {type: String, required: true},
     phone: {type: String, required: true},
-    finalPrice: {type: String, required: true}
+    finalPrice: {type: String, required: true},
+    date: { type: String }
 }, {
     timestamps: true,
     versionKey: false
