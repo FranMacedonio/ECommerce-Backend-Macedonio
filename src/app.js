@@ -35,7 +35,13 @@ app.use(cors())
 app.use(session({
     secret: 'secret',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 60000,
+        secure: false,
+        httpOnly: true,
+        sameSite: 'lax'
+    }
 }))
 app.use(passport.initialize())
 app.use(passport.session())

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra</title>
+    <style>
+        h1, span {
+            color: rgb(18, 136, 205);
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Compra realizada por <%= usuario.name %></h1>
+        <h2>Fecha: <%= orden.date %></h2>
+        <% orden.items.forEach(producto => { %>
+            <h3>♦<span><%= producto.name %>($<%= producto.price %>)</span> x<%= producto.cant %> → $<%= producto.price * producto.cant %></h3>
+        <% }) %>
+        <h2>Total a pagar: <span>$<%= orden.finalPrice %></span></h2>
+        <h3><span>Ciudad:</span> <%= orden.city %></h3>
+        <h3><span>Direccion de entrega:</span> <%= orden.address %></h3>
+        <h1>¡GRACIAS POR SU COMPRA!</h1>
+    </div>
+</body>
+</html>

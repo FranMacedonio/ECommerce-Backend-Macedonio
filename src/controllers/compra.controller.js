@@ -4,6 +4,8 @@ const carrito = new CartDAO
 const ordenes = new OrderDAO
 
 import moment from 'moment'
+import ejs from 'ejs'
+import { transporter } from '../config/nodemailer.js'
 
 export const renderOrdenes = async (req, res) => {
     res.render('compra', {
@@ -26,5 +28,18 @@ export const purchase = async (req, res) => {
         date: moment().format('DD-MM-YYYY, LT')
     })
     await carrito.deleteCarrito(req.user.email)
-    res.redirect('/')
+    ejs.renderFile(process.cwd() + "/src/views/email/compra.ejs", {
+        usuario: req.user,
+        orden
+    })
+        .then(body => {
+            transporter.sendMail({
+                from: process.env.MAIL,
+                to: orden.email,
+                subject: 'N.A.V | Resumen de compra',
+                html: body
+            })
+        })
+        .then(() => res.redirect('/'))
+        .catch(e => console.log(e))
 }

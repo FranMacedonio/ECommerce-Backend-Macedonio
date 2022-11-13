@@ -10,12 +10,16 @@ class MongoContainer {
     }
 
     async getObj(id) {
-        if(!id) {
-            const objects = await this.model.find()
-            return objects
+        try {
+            if(!id) {
+                const objects = await this.model.find()
+                return objects
+            }
+            const object = await this.model.find({_id: id})
+            return object
+        } catch {
+            return 0
         }
-        const object = await this.model.find({_id: id})
-        return object
     }
 
     async findEmail(email) {

@@ -1,10 +1,13 @@
 import passport from "passport"
+import ejs from 'ejs'
+import { transporter } from '../config/nodemailer.js'
 
 // DAO
 import UserDAO from "../services/dao/user.dao.js"
 import CartDAO from "../services/dao/cart.dao.js"
 const users = new UserDAO
 const carrito = new CartDAO
+
 
 export const renderSingup = async (req, res) => {
     if(req.isAuthenticated()) {
@@ -37,7 +40,19 @@ export const signup = async (req, res) => {
         const encryptPassword = await users.encryptPassword(password)
         await users.save({name, email, password: encryptPassword, img:'/images/usuarios/usuario.jpg'})
         await carrito.save({email, items: []})
-        res.redirect('/login')
+        ejs.renderFile(process.cwd() + "/src/views/email/signup.ejs", {
+            usuario: {name, email, password}
+        })
+            .then(body => {
+                transporter.sendMail({
+                    from: process.env.MAIL,
+                    to: email,
+                    subject: 'N.A.V | Nuevo Registro',
+                    html: body
+                })
+            })
+            .then(() => res.redirect('/login'))
+            .catch(e => console.log(e))
     }
 }
 

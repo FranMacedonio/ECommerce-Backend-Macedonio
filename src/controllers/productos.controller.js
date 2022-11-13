@@ -25,12 +25,19 @@ export const renderMarca = async (req, res) => {
 
 export const renderProduct = async (req, res) => {
     const producto = await productos.getObj(req.params.id)
-
-    res.render('products/producto', {
-        nav_title: producto[0].name + ' | N.A.V',
-        producto,
-        usuario: req.user
-    })
+    if(producto == 0) {
+        res.render('products/productos', {
+            nav_title: 'Productos | N.A.V',
+            productos: await productos.getObj(),
+            usuario: req.user
+        })
+    } else {
+        res.render('products/producto', {
+            nav_title: producto[0].name + ' | N.A.V',
+            producto,
+            usuario: req.user
+        })
+    }
 }
 
 export const agregarProducto = async (req, res) => {
