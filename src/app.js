@@ -2,7 +2,6 @@
 import express from 'express'
 import { dirname, join } from "path"
 import { fileURLToPath } from "url"
-import flash from 'connect-flash'
 import session from 'express-session'
 import passport from 'passport'
 import cors from 'cors'
@@ -45,14 +44,6 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
-app.use(flash())
-
-// Global Variables
-app.use((req, res, next) => {
-    res.locals.success_msg = req.flash('success_msg')
-    res.locals.error = req.flash('error')
-    next()
-})
 
 // Routes
 app.use(indexRoutes)
