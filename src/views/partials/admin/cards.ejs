@@ -1,0 +1,9 @@
+<% productos.forEach(prod => { %>
+    <div class="cards" id="<%= prod._id %>">
+        <p class="prod-name"><%= prod.name %></p>
+        <img src="<%= prod.img %>" alt="<%= prod.name %>">
+        <p class="prod-price">$<%= prod.price %></p>
+        <a href="/admin/productos/agregar/<%= prod._id %>" class="btn-carrito">Editar</a>
+        <button class="btn-carrito eliminarProd" data-id="<%= prod._id %>">Eliminar</button>
+    </div>
+<% }) %>

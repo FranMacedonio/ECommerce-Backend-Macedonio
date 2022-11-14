@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/header') %>
+<body>
+    <div id="container">
+        <h1>Agregar producto</h1>
+        <form method="POST" action="/admin/productos/agregar">
+            <input id="name" type="text" name="name" placeholder="Nombre del producto">
+            <input id="description" type="text" name="description" placeholder="Descripcion del producto">
+            <input id="price" type="text" name="price" placeholder="Precio del producto">
+            <input id="img" type="text" name="img" placeholder="/images/(pantalones ó remeras ó zapatillas)/(nombre de la imagen dentro de la carpeta static)">
+            <input id="category" type="text" name="category" placeholder="Categoria. (pantalones ó remeras ó zapatillas)">
+            <input id="brand" type="text" name="brand" placeholder="Marca. (adidas ó nike ó vans)">
+            <input type="submit" value="Agregar Producto">
+        </form>
+    </div>
+</body>
+</html>

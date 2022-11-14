@@ -16,6 +16,7 @@ import nosotrosRoutes from './routes/nosotros.routes.js'
 import categoriaRoutes from './routes/clase.routes.js'
 import compraRoutes from './routes/compra.routes.js'
 import ordenesRoutes from './routes/ordenes.routes.js'
+import adminRoutes from './routes/admin.routes.js'
 
 // Initializations
 import './config/passport.js'
@@ -55,6 +56,7 @@ app.use(nosotrosRoutes)
 app.use(categoriaRoutes)
 app.use(compraRoutes)
 app.use(ordenesRoutes)
+app.use(adminRoutes)
 
 // Static Files
 app.use(express.static(join(__dirname, 'public')))

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/header') %>
+<body>
+    <div id="container">
+        <h1>Agregar producto</h1>
+        <div id="cardAdmin">
+            <div>
+                <label for="name">Nombre del producto</label>
+                <input id="name" type="text" name="name" value="<%= producto[0].name %>">
+            </div>
+            <div>
+                <label for="description">Descripcion del producto</label>
+                <input id="description" type="text" name="description" value="<%= producto[0].description %>">
+            </div>
+            <div>
+                <label for="price">Precio del producto</label>
+                <input id="price" type="text" name="price" value="<%= producto[0].price %>">
+            </div>
+            <input id="prodID" type="hidden" value="<%= producto[0]._id %>">
+        </div>
+        <button id="editar">Editar</button>
+    </div>
+    <script src="/js/editar.js"></script>
+</body>
+</html>

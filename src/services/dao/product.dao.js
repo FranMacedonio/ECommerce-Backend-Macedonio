@@ -15,6 +15,10 @@ class ProductDAO extends MongoContainer {
         const objeto = await this.model.find({category: categoria})
         return objeto
     }
+
+    async editar(id, obj) {
+        await this.model.findOneAndUpdate({_id: id}, obj)
+    }
 }
 
 export default ProductDAO

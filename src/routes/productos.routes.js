@@ -16,6 +16,6 @@ router.route('/productos')
         
         router.route('/productos/:marca/:id')
         .get(renderProduct)
-        .post(agregarProducto)
+        .post(checkAuthentication, agregarProducto)
 
 export default router
