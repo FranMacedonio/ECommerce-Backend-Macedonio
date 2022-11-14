@@ -21,24 +21,9 @@ export const renderSingup = async (req, res) => {
 }
 
 export const signup = async (req, res) => {
-    const { name, email, password, confirm_password } = req.body
-    if(password !== confirm_password) {
-        console.log('Las contraseñas no coinciden')
-        res.redirect('/signup')
-    }
-    if(password.length < 6) {
-        console.log('La contraseña debe tener 6 o mas caracteres')
-        res.redirect('/signup')
-    }
-    
-    const emailUser = await users.findEmail(email)
-    if(emailUser) {
-        console.log(emailUser)
-        console.log('El email ingresado ya existe')
-        res.redirect('/signup')
-    } else {
+    const { name, email, password, img } = req.body
         const encryptPassword = await users.encryptPassword(password)
-        await users.save({name, email, password: encryptPassword, img:'/images/usuarios/usuario.jpg'})
+        await users.save({name, email, password: encryptPassword, img})
         await carrito.save({email, items: []})
         ejs.renderFile(process.cwd() + "/src/views/email/signup.ejs", {
             usuario: {name, email, password}
@@ -51,9 +36,7 @@ export const signup = async (req, res) => {
                     html: body
                 })
             })
-            .then(() => res.redirect('/login'))
             .catch(e => console.log(e))
-    }
 }
 
 export const renderLogin = (req, res) => {
@@ -69,8 +52,7 @@ export const renderLogin = (req, res) => {
 
 export const login = passport.authenticate('local', {
     failureRedirect: '/login',
-    successRedirect: '/',
-    failureFlash: true
+    successRedirect: '/'
 })
 
 export const logout = (req, res) => {

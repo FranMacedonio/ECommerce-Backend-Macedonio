@@ -482,6 +482,12 @@ body {
             }
         }
 
+        #erroresValidacion {
+            #nameError, #mailError, #passError, #passVacia, #mailInvalido {
+                display: none;
+            }
+        }
+
         #formulario {
             position: relative;
             @include flex(column nowrap, space-between, center);
@@ -499,10 +505,14 @@ body {
                 width: 4rem
             }
 
-            form {
+            form, #signup {
                 @include flex(column nowrap, space-between, center);
                 width: 80%;
                 margin-top: 1rem;
+
+                .borde {
+                    border-color: red;
+                }
 
                 input {
                     width: 100%;
